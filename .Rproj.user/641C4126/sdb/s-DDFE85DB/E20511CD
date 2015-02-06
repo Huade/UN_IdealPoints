@@ -1,0 +1,16 @@
+{
+    "contents" : "library(shiny)\n\nshinyUI(fluidPage(\n\n  # Application title\n  titlePanel(\"Old Faithful Geyser Data\"),\n\n  # Sidebar with a slider input for number of bins\n  sidebarLayout(\n    sidebarPanel(\n      textInput(\"name\", \"Name:\", value=\"Black\")),\n\n    # Show a plot of the generated distribution\n    mainPanel(\n      plotOutput(\"trendPlot\")\n    )\n  )\n))\n",
+    "created" : 1423185736842.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "132008353",
+    "id" : "E20511CD",
+    "lastKnownWriteTime" : 1423186193,
+    "path" : "~/IdealPoints/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

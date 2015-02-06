@@ -1,0 +1,16 @@
+{
+    "contents" : "library(shiny)\nlibrary(dplyr)\nlibrary(ggvis)\nSupCt <- read.csv(\"SupCt.csv\")\nshinyServer(function(input, output) {\n  SupCt  %>% \n    filter(Name==reactive(input$name))  %>%  \n    ggvis(~Year,  ~Ideal.point)  %>% \n    layer_points() %>% \n    layer_smooths() %>%\n    add_axis(\"x\", title = \"Year\") %>%\n    add_axis(\"y\", title = \"Ideal Point\") %>%\n    bind_shiny(\"ggvis\", \"ggvis_ui\")  \n})\n\n})\n",
+    "created" : 1423185737023.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2887602519",
+    "id" : "29651D76",
+    "lastKnownWriteTime" : 1423186220,
+    "path" : "~/IdealPoints/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
