@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Ideal Points for Supreme Court, Congress & President"),
 
   # Sidebar with a slider input for number of bins
   
