@@ -15,7 +15,7 @@ shinyServer(function(input, output) {
         filter(Name %in% input$name)
       
       j_names <- paste(input$name, collapse = ' and ')
-      graph_title  <- paste("Ideal Points for", j_names, sep="")
+      graph_title  <- paste("Ideal Points for ", j_names, sep="")
       
       
       ggideal_point <- ggplot(df_filtered,aes(x=Year, y=Ideal.point, by=Name, color=Name))+
