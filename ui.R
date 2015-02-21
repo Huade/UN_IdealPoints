@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Ideal Points for Supreme Court, Congress & President"),
+  titlePanel("Ideal Points for Supreme Court"),
 
   # Sidebar with a slider input for number of bins
   
