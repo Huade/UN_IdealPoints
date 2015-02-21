@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Ideal Points for Supreme Court"),
+  titlePanel("Ideal Points for Supreme Court Justices"),
 
   # Sidebar with a slider input for number of bins
   
@@ -17,7 +17,7 @@ shinyUI(fluidPage(
                               "Scalia","Kennedy","Souter","Thomas","Ginsburg","Breyer",
                               "Roberts","Alito","Sotomayor","Kagen"),
                   multiple = T,
-                  options = list(maxItems = 3,
+                  options = list(maxItems = 5,
                                  placeholder = 'Select a justice'))
       ),
 

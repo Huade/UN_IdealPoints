@@ -14,9 +14,17 @@ shinyServer(function(input, output) {
         filter(!is.na(Ideal.point)) %>%
         filter(Name %in% input$name)
       
-      j_names <- paste(input$name, collapse = ' and ')
-      graph_title  <- paste("Ideal Points for ", j_names, sep="")
+      if (length(input$name)>2) {
+        j_names_comma <- paste(input$name[-length(input$name)], collapse = ', ')
+        j_names <- paste(j_names_comma, ", and ", input$name[length(input$name)],
+                         sep="")
+      }
       
+      else{
+        j_names <- paste(input$name, collapse = ' and ')
+      }
+      
+      graph_title  <- paste("Ideal Points for ", j_names, sep="")
       
       ggideal_point <- ggplot(df_filtered,aes(x=Year, y=Ideal.point, by=Name, color=Name))+
         geom_point()+
@@ -26,9 +34,10 @@ shinyServer(function(input, output) {
         labs(y = "Ideal Points")+
         labs(title = graph_title)
       
-      py <- plotly(username="Huade", key="g4i6u5td68")
+      # Change to an active API key
+      py <- plotly(username="Huade", key="XXXXXXXXX")
       res <- py$ggplotly(ggideal_point, kwargs=list(filename="Ideal Point", 
-                                                    fileopt="overwrite", # Overwrite plot in Plotly's website
+                                                    fileopt="overwrite",
                                                     auto_open=FALSE))
       tags$iframe(src=res$response$url,
                   frameBorder="0",  # Some aesthetics
