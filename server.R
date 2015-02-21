@@ -26,7 +26,7 @@ shinyServer(function(input, output) {
         labs(y = "Ideal Points")+
         labs(title = graph_title)
       
-      p <- plotly(username="Huade", key="t23brq57cr")
+      py <- plotly(username="Huade", key="g4i6u5td68")
       res <- py$ggplotly(ggideal_point, kwargs=list(filename="Ideal Point", 
                                                     fileopt="overwrite", # Overwrite plot in Plotly's website
                                                     auto_open=FALSE))
