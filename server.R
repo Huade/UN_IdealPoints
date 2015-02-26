@@ -3,7 +3,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
-SupCt <- read.csv("SupCt.csv")
+
 shinyServer(function(input, output) {
   
   output$trendPlot <- renderUI({
@@ -31,8 +31,13 @@ shinyServer(function(input, output) {
         geom_line()+
         theme_bw()+
         labs(x = "Year")+
-        labs(y = "Ideal Points")+
-        labs(title = graph_title)
+        labs(y = "Ideology")+
+        labs(title = graph_title)+
+        scale_colour_hue("clarity",l=70, c=150)
+      
+      if ("p" %in% input$median) {
+        ggideal_point <- ggideal_point + geom_line(data = Medians, aes(x=Term, y=President, by=NULL, color = NULL), alpha = 0.2)
+      }
       
       # Change to an active API key
       py <- plotly(username="Huade", key="XXXXXXXXX")
@@ -41,8 +46,8 @@ shinyServer(function(input, output) {
                                                     auto_open=FALSE))
       tags$iframe(src=res$response$url,
                   frameBorder="0",  # Some aesthetics
-                  height=400,
-                  width=650)
+                  height=600,
+                  width=800)
     }
     
     

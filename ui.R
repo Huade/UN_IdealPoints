@@ -8,8 +8,9 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins
   
     sidebarPanel(
+      h3("Ideal Points"),
       selectizeInput("name",
-                  label = "Name",
+                  label = "Justice(s) Name",
                   choices = c("Black","Reed","Frankfurter","Jackson","Burton",
                               "Vinson","Clark","Minton","Douglas","Warren","Harlan","Brennan",
                               "Whittaker","Stewart","White","Goldberg","Fortas","Marshall",
@@ -18,8 +19,17 @@ shinyUI(fluidPage(
                               "Roberts","Alito","Sotomayor","Kagen"),
                   multiple = T,
                   options = list(maxItems = 5,
-                                 placeholder = 'Select a justice'))
-      ),
+                                 placeholder = 'Select a justice')
+                  ),
+      checkboxGroupInput("median", 
+                         label = "Median ideal point estimates",
+                         choices = c("Presidents" = "p",
+                                     "Senate" = "s",
+                                     "House" = "h",
+                                     "Supreme Court" = "sc")
+                         ),
+      helpText("Data: Bailey & Maltzman, The Constrained Court")
+    ),
 
     # Show a plot of the generated distribution
     mainPanel(
