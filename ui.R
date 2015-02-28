@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Ideal Points for Supreme Court Justices"),
+  titlePanel("Ideal Points"),
 
   # Sidebar with a slider input for number of bins
   
@@ -11,17 +11,12 @@ shinyUI(fluidPage(
       h3("Ideal Points Estimation"),
       # Select Justices name here
       selectizeInput("name",
-                  label = "Justice(s) Name",
-                  choices = c("Black","Reed","Frankfurter","Jackson","Burton",
-                              "Vinson","Clark","Minton","Douglas","Warren","Harlan","Brennan",
-                              "Whittaker","Stewart","White","Goldberg","Fortas","Marshall",
-                              "Burger","Blackmun","Powell","Rehnquist","Stevens","OConnor",
-                              "Scalia","Kennedy","Souter","Thomas","Ginsburg","Breyer",
-                              "Roberts","Alito","Sotomayor","Kagen"),
+                  label = "Name(s) of Interest",
+                  choices = unique(Ideal_Point_Data$Name),
                   multiple = T,
                   options = list(maxItems = 5,
-                                 placeholder = 'Select a justice'),
-                  selected = "Black"
+                                 placeholder = 'Select a name'),
+                  selected = "SCJ. Black"
                   ),
       
       # Select whether include medians or not
@@ -32,6 +27,8 @@ shinyUI(fluidPage(
                                      "House" = "h",
                                      "Supreme Court" = "sc")
                          ),
+      # Term plot
+      plotOutput("termPlot", height = 200),
       
       helpText("Data: Bailey & Maltzman, The Constrained Court")
     ),

@@ -1,5 +1,5 @@
 Year,ID,Name,Ideal point,10th percentile,90th percentile,Institution,,Notes
-1950,100001.1950,Black,-1.22,-1.69,-0.74,SupremeCourt,,"For justice-years with less than 14 votes I coded those votes as being from the year before/after depending on whether it was at the start or end of a justice's career.   For example, this means that Frankfurter ideal point for 1961 is assumed to be the same as in 1962.  Therefore, we report only his ideal point in 1961 but if one wants it for 1962 (as, for example in appointment studies that use departing justice ideal points), one would simply use his ideal point from 1961."
+1950,100001.1950,Black,-1.22,-1.69,-0.74,SupremeCourt,,
 1950,100002.1950,Reed,1.09,0.59,1.54,SupremeCourt,,
 1950,100003.1950,Frankfurter,-0.43,-0.79,-0.05,SupremeCourt,,
 1950,100005.1950,Jackson,0.48,0.12,0.86,SupremeCourt,,
