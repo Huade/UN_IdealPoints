@@ -72,7 +72,7 @@ shinyServer(function(input, output) {
       }
       
       # Change to an active API key
-      py <- plotly(username="Huade", key="xxxxxxxxx")
+      py <- plotly(username="Huade", key="zc5zdbq7f9")
       res <- py$ggplotly(ggideal_point, kwargs=list(filename="Ideal Point", 
                                                     fileopt="overwrite",
                                                     auto_open=FALSE))
