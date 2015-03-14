@@ -7,7 +7,7 @@ library(plotly)
 shinyServer(function(input, output) {
   
   output$trendPlot <- renderUI({
-    if (length(input$name)==0) print("Please select at least one person")
+    if (length(input$name)==0) print("Please select at least one country")
     
     else {
       df_trend <- Ideal_Point_Data  %>%

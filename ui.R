@@ -16,17 +16,11 @@ shinyUI(fluidPage(
                   multiple = T,
                   options = list(maxItems = 5,
                                  placeholder = 'Select a name'),
-                  selected = "SCJ. Black"
+                  selected = "United States of America"
+                  
                   ),
       
-      # Select whether include medians or not
-      checkboxGroupInput("median", 
-                         label = "Median ideal point estimates",
-                         choices = c("Presidents" = "p",
-                                     "Senate" = "s",
-                                     "House" = "h",
-                                     "Supreme Court" = "sc")
-                         ),
+      
       # Term plot
       plotOutput("termPlot", height = 200),
       
