@@ -11,7 +11,7 @@ shinyUI(fluidPage(
       h3("Ideal Points Estimation"),
       # Select Justices name here
       selectizeInput("name",
-                  label = "Name(s) of Interest",
+                  label = "Country Name(s) of Interest",
                   choices = unique(Ideal_Point_Data$Name),
                   multiple = T,
                   options = list(maxItems = 5,
