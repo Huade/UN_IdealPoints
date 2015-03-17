@@ -38,39 +38,6 @@ shinyServer(function(input, output) {
       min_Year <- min(df_trend$Year)
       max_Year <- max(df_trend$Year)
       
-      # Process Median data
-      Medians <- Medians %>% filter(Year>=min_Year & Year<=max_Year)
-      
-      Medians_container <- NULL
-
-      if ("p" %in% input$median) {
-        Medians_temp <- Medians %>% filter(MedianSelect == "President")
-        Medians_container <- rbind(Medians_container, Medians_temp)
-      }
-      
-      if ("s" %in% input$median) {
-        Medians_temp <- Medians %>% filter(MedianSelect == "SenMedian")
-        Medians_container <- rbind(Medians_container, Medians_temp)
-      }
-      
-      if ("h" %in% input$median) {
-        Medians_temp <- Medians %>% filter(MedianSelect == "HouseMedian")
-        Medians_container <- rbind(Medians_container, Medians_temp)
-      }
-      
-      if ("sc" %in% input$median) {
-        Medians_temp <- Medians %>% filter(MedianSelect == "SCMedian")
-        Medians_container <- rbind(Medians_container, Medians_temp)
-      }
-      
-      # Median output
-      if (length(input$median)!=0) {
-        ggideal_point <- ggideal_point + 
-          geom_line(data = Medians_container, 
-                    aes(x=Year, y=IdealPoints, by=MedianSelect, color=MedianSelect), 
-                    linetype = "dashed") 
-      }
-      
       # Change to an active API key
       py <- plotly(username="Huade", key="zc5zdbq7f9")
       res <- py$ggplotly(ggideal_point, kwargs=list(filename="Ideal Point", 
