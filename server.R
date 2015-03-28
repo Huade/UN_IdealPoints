@@ -2,6 +2,7 @@ library(shiny)
 library(dplyr)
 library(ggplot2)
 library(plotly)
+library(ggthemes)
 
 
 shinyServer(function(input, output) {
@@ -28,18 +29,23 @@ shinyServer(function(input, output) {
       
       ggideal_point <- ggplot(df_trend)+
         geom_line(aes(x=Year, y=Ideal.point, by=Name, color=Name))+
-        theme_bw()+
         labs(x = "Year")+
         labs(y = "Ideology")+
         labs(title = graph_title)+
-        scale_colour_hue("clarity",l=70, c=150)
+        scale_colour_hue("clarity",l=70, c=150)+
+        theme_few()
+      
+      ggideal_point <- ggideal_point+
+        theme(legend.direction = "horizontal", legend.position = "bottom")
+
+
       
       # Year range
       min_Year <- min(df_trend$Year)
       max_Year <- max(df_trend$Year)
       
       # Change to an active API key
-      py <- plotly(username="Huade", key="zc5zdbq7f9")
+      py <- plotly(username="Huade", key="xxxxxxxxx")
       res <- py$ggplotly(ggideal_point, kwargs=list(filename="Ideal Point", 
                                                     fileopt="overwrite",
                                                     auto_open=FALSE))

@@ -24,7 +24,7 @@ shinyUI(fluidPage(
       # Term plot
       plotOutput("termPlot", height = 200),
       
-      helpText("Data: Bailey & Maltzman, The Constrained Court")
+      helpText("Data: Bailey, Michael, Anton  Strezhnev and Erik Voeten. Forthcoming.  “Estimating Dynamic State Preferences from United Nations Voting Data.” Journal of Conflict Resolution. ")
     ),
 
     # Show a plot of the generated distribution
