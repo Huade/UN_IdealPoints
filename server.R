@@ -45,7 +45,10 @@ shinyServer(function(input, output, session) {
       max_Year <- max(df_trend$Year)
       
 
-      fig <- gg2list(ggideal_point) # This converts the ggplot2 graph into Plotly's format, where you can see all of the keys
+      # This converts the ggplot2 graph into Plotly's format.
+      # This is a list of lists which declaratively describe every attribute
+      # of the plotly graph
+      fig <- gg2list(ggideal_point)
 
       data <- list()
       for(i in 1:(length(fig)-1)){data[[i]]<-fig[[i]]}
@@ -73,6 +76,8 @@ shinyServer(function(input, output, session) {
       layout$showlegend <- FALSE # remove the legend
       layout$margin$r <- 170 # increase the size of the right margin to accommodate more room for the annotation labels
 
+      # Send this message up to the browser client, which will get fed through to
+      # Plotly's javascript graphing library embedded inside the graph
       return(list(
           list(
               id="trendPlot",
