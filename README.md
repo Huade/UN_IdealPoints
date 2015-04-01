@@ -2,19 +2,6 @@
 This repo is an interactive data visualization project for Prof. Bailey. 
 
 ![overview](http://i.imgur.com/lR7NKHt.gif)
-# Features
-Users can select name(s) of justice of interest when they want to compare ideal points for each justice.
-
-![Select](./figures/select_name.png)
-
-Users can compare up to five justices.
-
-![compare](./figures/plot.png)
-
-Users can zoom-in plot with `ploy.ly` frame.
-
-![zoom_in](./figures/zoom_in.png)
-![zoom_in_2](./figures/zoom_in_2.png)
 
 # How to use
 1. Download the repo as a zip file (or clone it)
