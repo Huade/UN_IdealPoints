@@ -5,9 +5,9 @@ library(plotly)
 library(ggthemes)
 
 
-shinyServer(function(input, output) {
-  
-  output$trendPlot <- renderUI({
+shinyServer(function(input, output, session) {
+
+  output$trendPlot <- renderGraph({
     if (length(input$name)==0) print("Please select at least one country")
     
     else {
@@ -44,15 +44,20 @@ shinyServer(function(input, output) {
       min_Year <- min(df_trend$Year)
       max_Year <- max(df_trend$Year)
       
-      # Change to an active API key
-      py <- plotly(username="Huade", key="xxxxxxxxx")
-      res <- py$ggplotly(ggideal_point, kwargs=list(filename="Ideal Point", 
-                                                    fileopt="overwrite",
-                                                    auto_open=FALSE))
-      tags$iframe(src=res$response$url,
-                  frameBorder="0",  # Some aesthetics
-                  height=600,
-                  width=800)
+
+      fig <- gg2list(ggideal_point) # This converts the ggplot2 graph into Plotly's format, where you can see all of the keys
+
+      data <- list()
+      for(i in 1:(length(fig)-1)){data[[i]]<-fig[[i]]}
+      layout <- fig$kwargs$layout
+      return(list(
+          list(
+              id="trendPlot",
+              task="newPlot",
+              data=data,
+              layout=layout
+          )
+      ))
     }
     
     
