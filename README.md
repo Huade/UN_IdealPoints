@@ -1,7 +1,7 @@
 # IdealPoints Data Visualization
 This repo is an interactive data visualization project for Prof. Bailey. 
 
-![overview](./figures/overview.png)
+![overview](http://i.imgur.com/lR7NKHt.gif)
 # Features
 Users can select name(s) of justice of interest when they want to compare ideal points for each justice.
 
