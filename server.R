@@ -50,6 +50,29 @@ shinyServer(function(input, output, session) {
       data <- list()
       for(i in 1:(length(fig)-1)){data[[i]]<-fig[[i]]}
       layout <- fig$kwargs$layout
+
+      layout$annotations <- NULL # Remove the existing annotations (the legend label)
+      layout$annotations <- list()
+
+      # Add colored text annotations next to the end of each line
+      # More about plotly annotations: https://plot.ly/r/reference/#annotation
+      # Each key that we update is documented in that link above.
+      for(i in 1:(length(data))){ # data is a list of the lines in the graph
+        layout$annotations[[i]] <- list(
+          text = data[[i]]$name,  # The text label of the annotation, e.g. "Canada"
+          font = list(color = data[[i]]$line$color), # Match the font color to the line color
+          showarrow = FALSE, # Don't show the annotation arrow
+          y = data[[i]]$y[[length(data[[i]]$y)]], # set the y position of the annotation to the last point of the line
+          yref = "y1", # the "y" coordinates above are with respect to the yaxis
+          x = 1, # set the x position of the graph to the right hand side of the graph
+          xref = "paper", # the x coordinates are with respect to the "paper", where 1 means the right hand side of the graph and 0 means the left hand side
+          xanchor = "left" # position the x coordinate with respect to the left of the text
+        );
+      }
+
+      layout$showlegend <- FALSE # remove the legend
+      layout$margin$r <- 170 # increase the size of the right margin to accommodate more room for the annotation labels
+
       return(list(
           list(
               id="trendPlot",
