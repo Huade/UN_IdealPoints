@@ -38,13 +38,6 @@ shinyServer(function(input, output, session) {
       ggideal_point <- ggideal_point+
         theme(legend.direction = "horizontal", legend.position = "bottom")
 
-
-      
-      # Year range
-      min_Year <- min(df_trend$Year)
-      max_Year <- max(df_trend$Year)
-      
-
       # This converts the ggplot2 graph into Plotly's format.
       # This is a list of lists which declaratively describe every attribute
       # of the plotly graph
@@ -91,24 +84,5 @@ shinyServer(function(input, output, session) {
     
   })
   
-  output$termPlot <- renderPlot({
-    df_term <- Ideal_Point_Data  %>%
-      filter(Name %in% input$name) %>% 
-      group_by(Name) %>% 
-      summarise(terms = n())
-    
-    trans_theme <- theme(
-      panel.grid.minor = element_blank(), 
-      panel.grid.major = element_blank(),
-      panel.background = element_rect(fill=NA),
-      plot.background = element_rect(fill=NA)
-    )
-    
-    ggplot(df_term, aes(x=reorder(Name, terms), y=terms))+
-      geom_bar(stat = "identity", fill = "#2980b9")+
-      theme_bw()+
-      trans_theme+
-      labs(y="Terms (in years)", x="")+
-      coord_flip()
-  }, bg="transparent")
+
 })
