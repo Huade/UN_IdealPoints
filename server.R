@@ -28,6 +28,8 @@ shinyServer(function(input, output, session) {
       graph_title  <- paste("Ideal Points for ", j_names, sep="")
       
       ggideal_point <- ggplot(df_trend)+
+        geom_hline(aes(yintercept = 2), color = "white")+
+        geom_hline(aes(yintercept = -2), color = "white")+
         geom_line(aes(x=Year, y=Ideal.point, by=Name, color=Name))+
         labs(x = "Year")+
         labs(y = "Ideology")+
