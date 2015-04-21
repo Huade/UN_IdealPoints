@@ -1,5 +1,4 @@
 library(shiny)
-library(dplyr)
 library(ggplot2)
 library(plotly)
 library(ggthemes)
@@ -11,8 +10,7 @@ shinyServer(function(input, output, session) {
     if (length(input$name)==0) print("Please select at least one country")
     
     else {
-      df_trend <- Ideal_Point_Data  %>%
-        filter(Name %in% input$name)
+      df_trend <- subset(Ideal_Point_Data, Name %in% input$name)
       
       # Graph title
       if (length(input$name)>2) {

@@ -37,7 +37,7 @@ shinyUI(fluidPage(
     p("Bailey, Michael, Anton  Strezhnev and Erik Voeten. Forthcoming.'Estimating Dynamic State Preferences from United Nations Voting Data.'",
       "Journal of Conflict Resolution. "),
     p("Visualized by Huade Huo. Code available on", 
-      a("GitHub.",href = "https://github.com/Huade/UN_IdealPoints"))
+      a("GitHub",href = "https://github.com/Huade/UN_IdealPoints"), "under the MIT License")
   )
 )
 )

@@ -1,5 +1,4 @@
 # Golbal environment for both ui and server
-library(dplyr)
 
 # Load data
 UN <- read.csv("Data/UN_IdealPoints.csv", stringsAsFactors=F)
