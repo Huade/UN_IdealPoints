@@ -5,6 +5,8 @@ library(dplyr)
 UN <- read.csv("Data/UN_IdealPoints.csv", stringsAsFactors=F)
 UN <- UN[complete.cases(UN),]
 
-Ideal_Point_Data <- UN
+load("Data/UN_trend.RData")
+
+Ideal_Point_Data <- rbind(UN, UN_trend)
 
 source("plotlyGraphWidget.R")

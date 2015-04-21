@@ -6,7 +6,7 @@ library(ggthemes)
 
 
 shinyServer(function(input, output, session) {
-
+  
   output$trendPlot <- renderGraph({
     if (length(input$name)==0) print("Please select at least one country")
     
@@ -37,21 +37,21 @@ shinyServer(function(input, output, session) {
         scale_colour_hue("clarity",l=70, c=150)+
         theme_few()
       
-      ggideal_point <- ggideal_point+
-        theme(legend.direction = "horizontal", legend.position = "bottom")
-
+      
+      
+      
       # This converts the ggplot2 graph into Plotly's format.
       # This is a list of lists which declaratively describe every attribute
       # of the plotly graph
       fig <- gg2list(ggideal_point)
-
+      
       data <- list()
       for(i in 1:(length(fig)-1)){data[[i]]<-fig[[i]]}
       layout <- fig$kwargs$layout
-
+      
       layout$annotations <- NULL # Remove the existing annotations (the legend label)
       layout$annotations <- list()
-
+      
       # Add colored text annotations next to the end of each line
       # More about plotly annotations: https://plot.ly/r/reference/#annotation
       # Each key that we update is documented in that link above.
@@ -67,24 +67,24 @@ shinyServer(function(input, output, session) {
           xanchor = "left" # position the x coordinate with respect to the left of the text
         );
       }
-
+      
       layout$showlegend <- FALSE # remove the legend
       layout$margin$r <- 170 # increase the size of the right margin to accommodate more room for the annotation labels
-
+      
       # Send this message up to the browser client, which will get fed through to
       # Plotly's javascript graphing library embedded inside the graph
       return(list(
-          list(
-              id="trendPlot",
-              task="newPlot",
-              data=data,
-              layout=layout
-          )
+        list(
+          id="trendPlot",
+          task="newPlot",
+          data=data,
+          layout=layout
+        )
       ))
     }
     
     
   })
   
-
+  
 })
